@@ -138,7 +138,7 @@ import "./ManageTutorial.css";
 
 function ManageTutorial() {
   const [tutorials, setTutorials] = useState([]);
-  const [form, setForm] = useState({ title: "", desc: "", icon: "", link: "" });
+  const [form, setForm] = useState({ title: "", desc: "", icon: "", link: "" ,sections: [{ title: "", content: "" }]});
   const [editId, setEditId] = useState(null);
   const [showModal, setShowModal] = useState(false); // modal state
 
@@ -150,7 +150,14 @@ function ManageTutorial() {
     const res = await getTutorials();
     setTutorials(res.data);
   };
-
+const handleSectionChange = (index, field, value) => {
+  const updatedSections = [...form.sections];
+  updatedSections[index][field] = value;
+  setForm({ ...form, sections: updatedSections });
+};
+const addSectionField = () => {
+  setForm({ ...form, sections: [...form.sections, { title: "", content: "" }] });
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -168,16 +175,28 @@ function ManageTutorial() {
     }
   };
 
+  // const handleEdit = (tutorial) => {
+  //   setForm({
+  //     title: tutorial.title,
+  //     desc: tutorial.desc,
+  //     icon: tutorial.icon,
+  //     link: tutorial.link,
+  //   });
+  //   setEditId(tutorial._id);
+  //   setShowModal(true); // open modal for edit
+  // };
+
   const handleEdit = (tutorial) => {
-    setForm({
-      title: tutorial.title,
-      desc: tutorial.desc,
-      icon: tutorial.icon,
-      link: tutorial.link,
-    });
-    setEditId(tutorial._id);
-    setShowModal(true); // open modal for edit
-  };
+  setForm({
+    title: tutorial.title,
+    desc: tutorial.desc,
+    icon: tutorial.icon,
+    link: tutorial.link,
+    sections: tutorial.sections?.length ? tutorial.sections : [{ title: "", content: "" }]
+  });
+  setEditId(tutorial._id);
+  setShowModal(true);
+};
 
   const handleDelete = async (id) => {
     const confirm = window.confirm("Are you sure you want to delete this tutorial?");
@@ -273,6 +292,26 @@ function ManageTutorial() {
           value={form.link}
           onChange={(e) => setForm({ ...form, link: e.target.value })}
         />
+        <h3>Sections</h3>
+{form.sections.map((s, i) => (
+  <div key={i} className="section-input">
+    <input
+      type="text"
+      placeholder="Section Title"
+      value={s.title}
+      onChange={(e) => handleSectionChange(i, "title", e.target.value)}
+      required
+    />
+    <textarea
+      placeholder="Section Content"
+      value={s.content}
+      onChange={(e) => handleSectionChange(i, "content", e.target.value)}
+      required
+    />
+  </div>
+))}
+<button type="button" onClick={addSectionField}>+ Add Section</button>
+
         <div className="modal-actions">
           <button type="submit">{editId ? "Update" : "Add"}</button>
           <button type="button" onClick={() => setShowModal(false)}>Cancel</button>

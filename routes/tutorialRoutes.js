@@ -41,5 +41,17 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Get tutorial by link
+router.get("/link/:link", async (req, res) => {
+  try {
+    const tutorial = await Tutorial.findOne({ link: `/tutorial/${req.params.link}` });
+    if (!tutorial) return res.status(404).json({ error: "Tutorial not found" });
+    res.json(tutorial);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 
 export default router;
