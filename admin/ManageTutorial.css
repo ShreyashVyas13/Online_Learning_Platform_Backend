@@ -35,7 +35,7 @@
   gap: 1.5rem;
 }
 
-.admin-card {
+.admin-cardd {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -43,7 +43,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.admin-card h3 {
+.admin-cardd h3 {
   margin: 0.5rem 0;
   color: var(--brand-dark);
 }
@@ -97,7 +97,7 @@
   z-index: 999;
 }
 
-.modal {
+.modall {
   background: var(--card-bg);
   padding: 2rem;
   border-radius: 10px;
