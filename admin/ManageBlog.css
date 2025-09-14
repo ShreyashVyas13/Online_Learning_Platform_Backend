@@ -40,7 +40,8 @@
 }
 
 .admin-card {
-  background: #fff;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1rem 1.2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -101,7 +102,7 @@
 }
 
 .modal {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 2rem;
   max-width: 500px;
@@ -125,11 +126,13 @@
 
 .modal input,
 .modal textarea {
+  background: var(--card-bg);
   padding: 0.7rem 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   resize: none;
+  color: var(--text);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .modal input:focus,

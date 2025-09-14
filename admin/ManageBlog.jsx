@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getBlogs, addBlog, updateBlog, deleteBlog } from "../services/api";
 import "./ManageBlog.css";
+import { useNavigate } from "react-router-dom";
 
 function ManageBlog() {
+  const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const [form, setForm] = useState({
     title: "",
@@ -88,6 +90,10 @@ function ManageBlog() {
             <div className="actions">
               <button onClick={() => handleEdit(b)}>✏️ Edit</button>
               <button onClick={() => handleDelete(b._id)}>🗑 Delete</button>
+               {/* Add this button to manage extra details */}
+    <button onClick={() => navigate(`/manage-blog-details/${b._id}`)}>
+       🛠️Manage Details
+    </button>
             </div>
           </div>
         ))}

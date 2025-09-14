@@ -172,3 +172,52 @@
 .modal-close:hover {
   color: var(--brand);
 }
+
+.section-input {
+  margin-bottom: 1.5rem;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.section-input .ql-container {
+  min-height: 150px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 6px;
+}
+
+.delete-section {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.delete-section:hover {
+  background-color: #dc2626;
+}
+pre {
+  position: relative;
+  background: #1e1e1e;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+pre::after {
+  content: "📋 Copy";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  background: #444;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}

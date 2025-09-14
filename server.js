@@ -14,6 +14,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/tutorialDB");
 app.use("/api/tutorials", tutorialRoutes);
 app.use("/api/blogs", blogRoutes);
 
+
 app.listen(5000, () => console.log("Server running on port 5000"));
 
 app.use("/api/tutorials", tutorialRoutes);
