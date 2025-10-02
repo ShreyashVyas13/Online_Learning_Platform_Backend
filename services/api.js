@@ -38,3 +38,13 @@ export const updateBlog = (id, data) => axios.put(`${API_URL}/${id}`, data);
 
 // Delete a blog
 export const deleteBlog = (id) => axios.delete(`${API_URL}/${id}`);
+
+// ----- Inquiries -----
+const BASE_API = "http://localhost:5000/api";
+export const getInquiries = () => axios.get(`${BASE_API}/inquiries`);
+export const sendInquiry = (data) => axios.post(`${BASE_API}/inquiries`, data);
+// Send admin feedback
+
+export const sendFeedback = (id, feedback) => {
+  return axios.post(`http://localhost:5000/api/inquiries/${id}/feedback`, { feedback });
+};

@@ -16,6 +16,7 @@
     "express": "^5.1.0",
     "highlight.js": "^11.11.1",
     "mongoose": "^8.18.0",
+    "nodemailer": "^7.0.6",
     "quill": "^2.0.3",
     "react-quill": "^2.0.0"
   }
